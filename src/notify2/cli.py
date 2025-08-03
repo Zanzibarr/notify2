@@ -315,6 +315,20 @@ def photo(
                 progress.update(task, description="Photo sent!")
                 print_success("Photo sent successfully!")
 
+                # Display photo details in formatted table
+                photo_data = result["result"]["photo"][-1]  # Get the largest photo size
+                table = Table(title="Photo Details")
+                table.add_column("Property", style="cyan")
+                table.add_column("Value", style="green")
+
+                table.add_row("File ID", photo_data["file_id"])
+                table.add_row("File Unique ID", photo_data["file_unique_id"])
+                table.add_row("Width", str(photo_data["width"]))
+                table.add_row("Height", str(photo_data["height"]))
+                table.add_row("File Size", f"{photo_data['file_size']} bytes")
+
+                console.print(table)
+
     except (ConfigError, TelegramError, NotifyError) as e:
         print_error(str(e))
         sys.exit(1)
@@ -373,6 +387,20 @@ def document(
 
                 progress.update(task, description="Document sent!")
                 print_success("Document sent successfully!")
+
+                # Display document details in formatted table
+                document_data = result["result"]["document"]
+                table = Table(title="Document Details")
+                table.add_column("Property", style="cyan")
+                table.add_column("Value", style="green")
+
+                table.add_row("File Name", document_data.get("file_name", "N/A"))
+                table.add_row("MIME Type", document_data.get("mime_type", "N/A"))
+                table.add_row("File ID", document_data["file_id"])
+                table.add_row("File Unique ID", document_data["file_unique_id"])
+                table.add_row("File Size", f"{document_data['file_size']} bytes")
+
+                console.print(table)
 
     except (ConfigError, TelegramError, NotifyError) as e:
         print_error(str(e))
