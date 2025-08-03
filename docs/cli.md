@@ -27,7 +27,7 @@ notify2 test -c config.json    # Use custom config file
 
 ### Options
 
-- `-c, --config-path TEXT`: Path to a custom configuration file.
+- `-c, --config TEXT`: Path to a custom configuration file.
 - `--env`: Use environment variables for configuration.
 
 ---
@@ -50,7 +50,7 @@ notify2 send --silent "Secret message"          # Silent message
 - `--parse-mode [HTML|Markdown|MarkdownV2]`: Parse mode for message text. Defaults to `HTML`.
 - `--disable-preview`: Disables web page preview for links in the message.
 - `--silent`: Sends the message silently. Users will receive a notification with no sound.
-- `-c, --config-path TEXT`: Path to a custom configuration file.
+- `-c, --config TEXT`: Path to a custom configuration file.
 - `--env`: Use environment variables for configuration.
 
 ---
@@ -71,7 +71,7 @@ notify2 photo pic.jpg --parse-mode Markdown      # Formatted caption
 
 - `--caption TEXT`: Caption for the photo.
 - `--parse-mode [HTML|Markdown|MarkdownV2]`: Parse mode for caption text. Defaults to `HTML`.
-- `-c, --config-path TEXT`: Path to a custom configuration file.
+- `-c, --config TEXT`: Path to a custom configuration file.
 - `--env`: Use environment variables for configuration.
 
 ---
@@ -92,7 +92,7 @@ notify2 document file.txt --parse-mode Markdown      # Formatted caption
 
 - `--caption TEXT`: Caption for the document.
 - `--parse-mode [HTML|Markdown|MarkdownV2]`: Parse mode for caption text. Defaults to `HTML`.
-- `-c, --config-path TEXT`: Path to a custom configuration file.
+- `-c, --config TEXT`: Path to a custom configuration file.
 - `--env`: Use environment variables for configuration.
 
 ---
@@ -118,8 +118,3 @@ Show current configuration information.
 ```bash
 notify2 info
 ```
-
-### Options
-
-- `-c, --config-path TEXT`: Path to a custom configuration file.
-- `--env`: Use environment variables for configuration.
