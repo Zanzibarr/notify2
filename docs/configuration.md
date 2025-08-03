@@ -6,7 +6,7 @@ Notify2 offers flexible configuration options to suit various deployment scenari
 
 When multiple configuration sources are present, Notify2 follows a specific priority order:
 
-1.  **Command-line arguments**: Values provided directly to CLI commands (e.g., `--config-path`).
+1.  **Command-line arguments**: Values provided directly to CLI commands (e.g., `--config`).
 2.  **Environment variables**: Values loaded from the system's environment.
 3.  **Configuration file**: Values loaded from `~/.notify2/config.json` (or a custom path).
 4.  **Default values**: Hardcoded default values for optional parameters.
