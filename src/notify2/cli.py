@@ -23,10 +23,10 @@ Available Commands:
     - info: Show current configuration
 
 Example Usage:
-    $ notify test                    # Test connection
-    $ notify send "Hello, World!"   # Send message
-    $ notify photo image.jpg        # Send photo
-    $ notify setup                  # Interactive setup
+    $ notify2 test                    # Test connection
+    $ notify2 send "Hello, World!"   # Send message
+    $ notify2 photo image.jpg        # Send photo
+    $ notify2 setup                  # Interactive setup
 """
 
 import sys
@@ -106,9 +106,9 @@ def test(config: Optional[str], env: bool) -> None:
     and settings.
 
     Examples:\n
-        notify test                   # Use default config\n
-        notify test --env             # Use environment variables\n
-        notify test -c config.json    # Use custom config file
+        notify2 test                   # Use default config\n
+        notify2 test --env             # Use environment variables\n
+        notify2 test -c config.json    # Use custom config file
     """
     try:
         # Load configuration based on options
@@ -192,10 +192,10 @@ def send(
     or with disabled link previews.
 
     Examples:\n
-        notify send "Hello, World!"                         # Simple message\n
-        notify send "**Bold** text" --parse-mode Markdown   # Formatted\n
-        echo "Hello" | notify send                          # From stdin\n
-        notify send --silent "Secret message"               # Silent message\n
+        notify2 send "Hello, World!"                         # Simple message\n
+        notify2 send "**Bold** text" --parse-mode Markdown   # Formatted\n
+        echo "Hello" | notify2 send                          # From stdin\n
+        notify2 send --silent "Secret message"               # Silent message\n
     """
     try:
         # Load configuration based on options
@@ -286,9 +286,9 @@ def photo(
     with an optional caption and formatting.
 
     Examples:\n
-        notify photo image.jpg                          # Simple photo\n
-        notify photo sunset.png --caption "Beautiful!"  # With caption\n
-        notify photo pic.jpg --parse-mode Markdown      # Formatted caption\n
+        notify2 photo image.jpg                          # Simple photo\n
+        notify2 photo sunset.png --caption "Beautiful!"  # With caption\n
+        notify2 photo pic.jpg --parse-mode Markdown      # Formatted caption\n
     """
     try:
         # Load configuration based on options
@@ -345,9 +345,9 @@ def document(
     with an optional caption and formatting.
 
     Examples:\n
-        notify document report.pdf                          # Simple document\n
-        notify document data.csv --caption "Monthly data"   # With caption\n
-        notify document file.txt --parse-mode Markdown      # Formatted caption\n
+        notify2 document report.pdf                          # Simple document\n
+        notify2 document data.csv --caption "Monthly data"   # With caption\n
+        notify2 document file.txt --parse-mode Markdown      # Formatted caption\n
     """
     try:
         # Load configuration based on options
@@ -393,7 +393,7 @@ def setup() -> None:
     - Chat ID (your user ID or group ID)
 
     Example:
-        notify setup
+        notify2 setup
     """
     # Display welcome message
     console.print(
@@ -443,11 +443,11 @@ def setup() -> None:
                     "\n[bold green]Setup completed successfully![/bold green]"
                 )
                 console.print("You can now use the following commands:")
-                console.print("  • [cyan]notify test[/cyan] - Test your connection")
-                console.print("  • [cyan]notify send <message>[/cyan] - Send a message")
-                console.print("  • [cyan]notify photo <file>[/cyan] - Send a photo")
+                console.print("  • [cyan]notify2 test[/cyan] - Test your connection")
+                console.print("  • [cyan]notify2 send <message>[/cyan] - Send a message")
+                console.print("  • [cyan]notify2 photo <file>[/cyan] - Send a photo")
                 console.print(
-                    "  • [cyan]notify document <file>[/cyan] - Send a document"
+                    "  • [cyan]notify2 document <file>[/cyan] - Send a document"
                 )
 
     except KeyboardInterrupt:
@@ -468,7 +468,7 @@ def info() -> None:
     chat ID, and network settings.
 
     Example:
-        notify info
+        notify2 info
     """
     try:
         # Load and display configuration
@@ -496,7 +496,7 @@ def info() -> None:
     except ConfigError as e:
         print_error(str(e))
         console.print(
-            "\n[yellow]Run 'notify setup' to configure the application.[/yellow]"
+            "\n[yellow]Run 'notify2 setup' to configure the application.[/yellow]"
         )
         sys.exit(1)
 
