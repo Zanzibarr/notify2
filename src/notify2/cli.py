@@ -491,9 +491,38 @@ def info() -> None:
         table.add_row("Timeout", str(config.timeout) + "s")
         table.add_row("Retry Attempts", str(config.retry_attempts))
         table.add_row("Retry Delay", str(config.retry_delay) + "s")
+
+        # Test connection and get bot info
+        with TelegramNotifier(config) as notifier:
+            with Progress(
+                SpinnerColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                console=console,
+            ) as progress:
+                task = progress.add_task("Fetching bot information...", total=None)
+                bot_info = notifier.get_me()
+                progress.update(task, description="Bot information fetched!")
+                bot_data = bot_info["result"]
+
+        # Add bot information to the same table
+        table.add_section() # Add a separator for clarity
+        table.add_row("Bot ID", str(bot_data["id"]))
+        table.add_row("Bot Name", bot_data["first_name"])
+        table.add_row("Username", f"@{bot_data['username']}")
+        table.add_row(
+            "Can Join Groups", str(bot_data.get("can_join_groups", False))
+        )
+        table.add_row(
+            "Can Read All Group Messages",
+            str(bot_data.get("can_read_all_group_messages", False)),
+        )
+        table.add_row(
+            "Supports Inline Queries",
+            str(bot_data.get("supports_inline_queries", False)),
+        )
         console.print(table)
 
-    except ConfigError as e:
+    except (ConfigError, TelegramError) as e:
         print_error(str(e))
         console.print(
             "\n[yellow]Run 'notify2 setup' to configure the application.[/yellow]"
