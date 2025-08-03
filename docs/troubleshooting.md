@@ -39,7 +39,7 @@ This error occurs when Notify2 cannot locate its configuration file. By default,
 3.  **Specify a custom configuration path:**
     If your `config.json` is located elsewhere, you can tell Notify2 where to find it using the `--config-path` option:
     ```bash
-    notify2 send "Hello" --config-path /path/to/your/custom_config.json
+    notify2 send "Hello" --config /path/to/your/custom_config.json
     ```
 
 4.  **Use environment variables:**

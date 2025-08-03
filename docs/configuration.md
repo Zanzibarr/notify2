@@ -30,7 +30,7 @@ notify2 send "Hello from environment variables!"
 
 ## 2. Configuration File
 
-Notify2 can load configuration from a JSON file. By default, it looks for `~/.notify2/config.json`. You can also specify a custom path using the `--config-path` option in the CLI or the `config_path` parameter in the `Config.from_file()` method.
+Notify2 can load configuration from a JSON file. By default, it looks for `~/.notify2/config.json`. You can also specify a custom path using the `--config` option in the CLI or the `config_path` parameter in the `Config.from_file()` method.
 
 ### Default Configuration File Location
 
